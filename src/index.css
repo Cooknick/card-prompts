@@ -1,13 +1,11 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
+/* Color Theme Swatches in Hex */
+/* https://color.adobe.com/vogue%201%20Art%20deco-color-theme-11975411 */
+.vogue-1-Art-deco-1-hex { color: #AD761A; }
+.vogue-1-Art-deco-2-hex { color: #4B0320; }
+.vogue-1-Art-deco-3-hex { color: #71726B; }
+.vogue-1-Art-deco-4-hex { color: #F2ECD3; }
+.vogue-1-Art-deco-5-hex { color: #F3C4AC; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}

@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import Act from './pages/Act';
+import Draw from './pages/Draw';
+import Hunt from './pages/Hunt';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
