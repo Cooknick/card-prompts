@@ -1,14 +1,13 @@
 import React from 'react'
 import Deck from '../components/Deck'
-import { PageWrapper } from '../components/styled'
+import Page from '../components/Page'
 import list from '../lists/hunt.json'
 
 const Hunt = () => {
     return (
-        <PageWrapper>
-            <p>Hunt</p>
+        <Page>
             <Deck list={list} />
-        </PageWrapper>
+        </Page>
     )
 }
 
