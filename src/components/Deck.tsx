@@ -8,55 +8,69 @@ const DeckWrapper = styled.div`
     width: 100%;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 100%;
-    background-image: url('/img/hotel-wallpaper.png');
-`
-
-const ColorOverlay = styled(DeckWrapper)`
-background: rgba(172, 117, 26, 0.5);
-`
-
-const CardWrapper = styled.div`
-    border: 1px solid rgba(0,0,0, 0.1);
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0px 2px 3px rgba(0,0,0, 0.5);
-    min-width: 500px;
-    height: 200px;
-    padding: 20px;
-    text-align:center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-`
-
-const CardCount = styled.div`
-    color: lightgrey;
-    align-self: end;
-`
-
-const DeckButtonWrapper = styled.div`
-    display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: end;
-    min-width: 540px;
+    height: 100%;
+    background: white;
+    font-weight: bold;
+ 
 `
-const DeckButton = styled(Button)`
-    background: ${colorCodes.gold};
+const CardWrapper = styled.div`
+    flex: 2;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    padding: 0 10%;
+    flex-direction:column;
+`
+const CardCount = styled.div`
+    color: grey;
+`
+const CardHeader = styled.div`
+    font-size: 32px;
+    color: black;
+    margin: 5px 0;
+
+`
+const CardBody = styled.div`
+font-size: 28px;
+    color: black;
+`
+const DeckButtonWrapper = styled.div`
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+`
+const DeckButton = styled.div <{ isClicking: boolean }>`
+    background: ${props => props.isClicking ? colorCodes.pink : colorCodes.blue};
     color: white;
     border: none;
     transition: background 100ms;
+    height: 100px;
+    min-width: 250px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10%;
 
     :hover { 
-        background: ${colorCodes.red};
+        color: black;
     }
 `
 
-const Deck: FC<{ list: string[] }> = ({ list }) => {
+const includedValue = (array: number[], item: number) => {
+    return array.indexOf(item) > -1
+}
+
+const Deck: FC<{ list: string[], prompt: string }> = ({ list, prompt }) => {
+    const [deckHistory, setDeckHistory] = useState<number[]>([])
     const [card, setCard] = useState<string>('')
+    const [clicking, isClicking] = useState<boolean>(false)
     const [randNumber, setRandNumber] = useState<number>(0);
 
     useEffect(() => {
@@ -64,14 +78,19 @@ const Deck: FC<{ list: string[] }> = ({ list }) => {
     }, [])
 
     const generateNearlyRandomNumber = () => {
+        if (deckHistory.length === (list.length - 1)) {
+            setDeckHistory([])
+        }
+
         const newRandNumber: number = Math.floor(Math.random() * list.length)
 
-        if (newRandNumber === randNumber) {
+        if (newRandNumber === randNumber || includedValue(deckHistory, newRandNumber)) {
             generateNearlyRandomNumber()
             return;
         }
 
         setRandNumber(newRandNumber)
+        setDeckHistory(prev => [...prev, newRandNumber])
     }
 
     const generateCard = () => {
@@ -79,34 +98,29 @@ const Deck: FC<{ list: string[] }> = ({ list }) => {
         setCard(list[randNumber])
     }
 
+    const clickButton = () => {
+        isClicking(!clicking);
+        generateCard();
+    }
+
     return (
         <DeckWrapper>
-            <ColorOverlay>
-                <div>
-                    <CardWrapper>
-                        <div />
-                        <div>
-                            {card}
-                        </div>
-                        <CardCount>
-                            Prompt #{randNumber + 1}
-                        </CardCount>
-                    </CardWrapper>
-                </div>
-                <DeckButtonWrapper>
-                    <DeckButton onClick={() => generateCard()}>Next</DeckButton>
-                </DeckButtonWrapper>
-            </ColorOverlay>
+            <CardWrapper>
+                <CardCount>
+                    Prompt #{randNumber + 1}
+                </CardCount>
+                <CardHeader>
+                    {prompt}
+                </CardHeader>
+                <CardBody>
+                    {card}
+                </CardBody>
+            </CardWrapper>
+            <DeckButtonWrapper>
+                <DeckButton isClicking={clicking} onClick={() => clickButton()}>Next</DeckButton>
+            </DeckButtonWrapper>
         </DeckWrapper>
     )
 }
 
 export default Deck
-
-// const [card, setCard] = useState<string>('')
-// setCard(list[randomNumber])
-
-   // const generateCard = () => {
-    //     const randomNumber: number = Math.floor(Math.random() * list.length)
-    //     setCard(list[randomNumber])
-    // }

@@ -25,7 +25,7 @@ function App() {
           <Hunt />
         </Route>
         <Route path="/">
-          <Home />
+          <Act />
         </Route>
       </Switch>
     </Router>

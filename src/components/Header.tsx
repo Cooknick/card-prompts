@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { colorCodes, pageNames } from '../constants';
@@ -9,65 +9,65 @@ const HeaderWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    height: 60px;
+    height: 100px;
+    font-size: 20px;
     padding: 0 10%;
     box-sizing: border-box;
     justify-content: space-between;
-    background: ${colorCodes.red};
+    background: ${colorCodes.pink};
+    align-items: center;
 
     a {
         color: white;
     }
 `
 
-const HeaderButton = styled(Button) <{ active: boolean }>`
-    border: none;
-    background: ${props => props.active ? colorCodes.rose : 'none'};
-    color: ${props => props.active ? colorCodes.red : 'white'};
+const HeaderButton = styled.div <{ active: boolean }>`
+    height: 100%;
+    background: ${props => props.active ? 'white' : 'none'};
+    color: ${props => props.active ? colorCodes.pink : 'white'};
+    width: 30%;
+    align-items: center;
+    display:flex;
+    justify-content:center;
+    cursor: pointer;
 
     :hover {
-        background: ${colorCodes.rose};
-        border-color: ${colorCodes.rose};
-        color: black;
+        background: white;
+        color: ${colorCodes.pink};
     }
 `
 
 const HeaderButtonsWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    color: ${colorCodes.red};
-    width: 40%;
-    justify-content: space-between;
+    height: 100%;
+    width: 50%;
 `
 
 const Header = () => {
     const location = useLocation();
+    const history = useHistory();
 
     const route = location.pathname || ''
 
     return (
         <HeaderWrapper>
             <div>
-                <Link to="/">
-                    <h2>Party Stack</h2>
+                <Link to="/act">
+                    <h2>Act, Draw, Hunt</h2>
                 </Link>
             </div>
             <HeaderButtonsWrapper>
-                <Link to="/act">
-                    <HeaderButton active={route === `/${pageNames.act}`}>
-                        Act
-                    </HeaderButton>
-                </Link>
-                <Link to="/draw">
-                    <HeaderButton active={route === `/${pageNames.draw}`}>
-                        Draw
-                    </HeaderButton>
-                </Link>
-                <Link to="/hunt">
-                    <HeaderButton active={route === `/${pageNames.hunt}`}>
-                        Hunt
-                    </HeaderButton>
-                </Link>
+                <HeaderButton onClick={() => history.push('/act')} active={route === `/${pageNames.act}` || route === '/'}>
+                    Act
+                </HeaderButton>
+                <HeaderButton onClick={() => history.push('/draw')} active={route === `/${pageNames.draw}`}>
+                    Draw
+                </HeaderButton>
+                <HeaderButton onClick={() => history.push('/hunt')} active={route === `/${pageNames.hunt}`}>
+                    Hunt
+                </HeaderButton>
             </HeaderButtonsWrapper>
         </HeaderWrapper>
     )

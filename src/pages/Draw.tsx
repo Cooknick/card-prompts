@@ -6,7 +6,7 @@ import list from '../lists/draw.json'
 const Draw = () => {
     return (
         <Page>
-            <Deck list={list} />
+            <Deck list={list} prompt="Draw: " />
         </Page>
     )
 }

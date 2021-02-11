@@ -6,7 +6,7 @@ import list from '../lists/hunt.json'
 const Hunt = () => {
     return (
         <Page>
-            <Deck list={list} />
+            <Deck list={list} prompt="Go Find: " />
         </Page>
     )
 }

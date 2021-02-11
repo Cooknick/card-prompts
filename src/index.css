@@ -1,10 +1,11 @@
 body {
   margin: 0px;
   padding: 0px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
 }
 h1, h2, h3 {
-  font-family: 'Limelight', cursive;
+  font-family: 'Helvetica Neue', sans-serif;;
 }
 a {
   text-decoration: none;
