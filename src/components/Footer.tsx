@@ -4,17 +4,18 @@ import { colorCodes } from '../constants';
 const FooterWrapper = styled.div`
 color: white;
 bottom: 0px;
-background: black;
+background: ${colorCodes.pink};
 text-align: center;
-font-size: 12px;
-height: 60px;
+font-size: 16px;
+height: 80px;
 width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
 
     a {
-        color: white
+        color: white;
+        text-decoration: underline;
     }
 `
 const Footer = () => (

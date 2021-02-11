@@ -5,7 +5,7 @@ import list from '../lists/act.json'
 
 const Act = () => (
     <Page>
-        <Deck list={list} />
+        <Deck list={list} prompt="Act Out:" />
     </Page>
 )
 
