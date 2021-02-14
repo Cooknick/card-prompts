@@ -11,20 +11,3 @@ a {
   text-decoration: none;
   color: #4B0320;
 }
-/* Color Theme Swatches in Hex */
-/* https://color.adobe.com/vogue%201%20Art%20deco-color-theme-11975411 */
-.vogue-1-Art-deco-1-hex { color: #AD761A; }
-.vogue-1-Art-deco-2-hex { color: #4B0320; }
-.vogue-1-Art-deco-3-hex { color: #71726B; }
-.vogue-1-Art-deco-4-hex { color: #F2ECD3; }
-.vogue-1-Art-deco-5-hex { color: #F3C4AC; }
-
-/* Color Theme Swatches in RGBA */
-.vogue-1-Art-deco-1-rgba { color: rgba(172, 117, 26, 1); }
-.vogue-1-Art-deco-2-rgba { color: rgba(75, 2, 31, 1); }
-.vogue-1-Art-deco-3-rgba { color: rgba(112, 114, 107, 1); }
-.vogue-1-Art-deco-4-rgba { color: rgba(242, 235, 211, 1); }
-.vogue-1-Art-deco-5-rgba { color: rgba(242, 195, 172, 1); }
-
-
-

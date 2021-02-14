@@ -20,7 +20,7 @@ function App() {
         <Route path="/draw">
           <Draw />
         </Route>
-        <Route path="/hunt">
+        <Route path="/find">
           <Hunt />
         </Route>
         <Route path="/">

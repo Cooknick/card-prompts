@@ -64,7 +64,7 @@ const Header = () => {
                 <HeaderButton onClick={() => history.push('/draw')} active={route === `/${pageNames.draw}`}>
                     Draw
                 </HeaderButton>
-                <HeaderButton onClick={() => history.push('/hunt')} active={route === `/${pageNames.hunt}`}>
+                <HeaderButton onClick={() => history.push('/find')} active={route === `/${pageNames.hunt}`}>
                     Find
                 </HeaderButton>
             </HeaderButtonsWrapper>
