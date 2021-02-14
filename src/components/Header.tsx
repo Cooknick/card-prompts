@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { colorCodes, pageNames } from '../constants';
-import { Button } from './styled';
 
 const HeaderWrapper = styled.div`
     width: 100%;

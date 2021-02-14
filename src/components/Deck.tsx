@@ -112,7 +112,7 @@ const Deck: FC<{ list: string[], prompt: string }> = ({ list, prompt }) => {
                 <CardHeader>
                     {prompt}
                 </CardHeader>
-                <CardBody>
+                <CardBody data-testid="card-body">
                     {card}
                 </CardBody>
             </CardWrapper>
