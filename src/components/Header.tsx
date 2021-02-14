@@ -55,7 +55,7 @@ const Header = () => {
         <HeaderWrapper>
             <div>
                 <Link to="/act">
-                    <h2>Act, Draw, Hunt</h2>
+                    <h2>Act, Draw, Find</h2>
                 </Link>
             </div>
             <HeaderButtonsWrapper>
@@ -66,7 +66,7 @@ const Header = () => {
                     Draw
                 </HeaderButton>
                 <HeaderButton onClick={() => history.push('/hunt')} active={route === `/${pageNames.hunt}`}>
-                    Hunt
+                    Find
                 </HeaderButton>
             </HeaderButtonsWrapper>
         </HeaderWrapper>

@@ -8,7 +8,6 @@ import {
 
 import Act from './pages/Act';
 import Draw from './pages/Draw';
-import Home from './pages/Home';
 import Hunt from './pages/Hunt';
 
 function App() {
