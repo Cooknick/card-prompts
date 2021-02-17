@@ -13,8 +13,9 @@ const HeaderWrapper = styled.div`
     padding: 0 10%;
     box-sizing: border-box;
     justify-content: space-between;
-    background: ${colorCodes.pink};
+    background: ${colorCodes.primary};
     align-items: center;
+    box-shadow: inset 0px -3px 3px rgba(0,0,0,0.2);
 
     a {
         color: white;
@@ -24,16 +25,19 @@ const HeaderWrapper = styled.div`
 const HeaderButton = styled.div <{ active: boolean }>`
     height: 100%;
     background: ${props => props.active ? 'white' : 'none'};
-    color: ${props => props.active ? colorCodes.pink : 'white'};
+    color: ${props => props.active ? colorCodes.primary : 'white'};
     width: 30%;
     align-items: center;
     display:flex;
     justify-content:center;
     cursor: pointer;
+    ${props => props.active ? ' box-shadow: 3px 0px 3px rgba(0,0,0,0.2);' : ''};
+   
 
     :hover {
         background: white;
-        color: ${colorCodes.pink};
+        color: ${colorCodes.primary};
+        box-shadow: 3px 0px 3px rgba(0,0,0,0.2);
     }
 `
 

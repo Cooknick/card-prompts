@@ -4,7 +4,7 @@ import { colorCodes } from '../constants';
 const FooterWrapper = styled.div`
 color: white;
 bottom: 0px;
-background: ${colorCodes.pink};
+background: ${colorCodes.primary};
 text-align: center;
 font-size: 16px;
 height: 80px;
@@ -12,6 +12,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+box-shadow: inset 0px 3px 3px rgba(0,0,0,0.2);
 
     a {
         color: white;

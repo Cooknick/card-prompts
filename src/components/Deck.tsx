@@ -45,7 +45,7 @@ const DeckButtonWrapper = styled.div`
     align-items: center;
 `
 const DeckButton = styled.div <{ isClicking: boolean }>`
-    background: ${props => props.isClicking ? colorCodes.pink : colorCodes.blue};
+    background: ${props => props.isClicking ? colorCodes.primary : colorCodes.secondary};
     color: white;
     border: none;
     transition: background 100ms;
@@ -57,11 +57,22 @@ const DeckButton = styled.div <{ isClicking: boolean }>`
     align-items: center;
     cursor: pointer;
     margin-bottom: 10%;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0);
+    transition: all 150ms linear;
 
     :hover { 
-        color: black;
+        transform: scale(1.02);
+        box-shadow: -2px 5px 5px rgba(0,0,0,0.2);
+    }
+
+    :active {
+        background
     }
 `
+
+const spaceEvent = () => {
+
+}
 
 const includedValue = (array: number[], item: number) => {
     return array.indexOf(item) > -1
@@ -70,37 +81,39 @@ const includedValue = (array: number[], item: number) => {
 const Deck: FC<{ list: string[], prompt: string }> = ({ list, prompt }) => {
     const [deckHistory, setDeckHistory] = useState<number[]>([])
     const [card, setCard] = useState<string>('')
-    const [clicking, isClicking] = useState<boolean>(false)
+    const [isClicking, setIsClicking] = useState<boolean>(false)
     const [randNumber, setRandNumber] = useState<number>(0);
 
     useEffect(() => {
+        setDeckHistory([])
         generateCard()
     }, [])
 
-    const generateNearlyRandomNumber = () => {
-        if (deckHistory.length === (list.length - 1)) {
+    const generateCard = () => {
+        if (deckHistory.length === list.length) {
             setDeckHistory([])
+            return;
         }
 
         const newRandNumber: number = Math.floor(Math.random() * list.length)
+        console.log(newRandNumber)
 
         if (newRandNumber === randNumber || includedValue(deckHistory, newRandNumber)) {
-            generateNearlyRandomNumber()
+            generateCard()
             return;
         }
 
         setRandNumber(newRandNumber)
         setDeckHistory(prev => [...prev, newRandNumber])
-    }
-
-    const generateCard = () => {
-        generateNearlyRandomNumber()
-        setCard(list[randNumber])
+        setCard(list[newRandNumber])
     }
 
     const clickButton = () => {
-        isClicking(!clicking);
+        setIsClicking(true);
         generateCard();
+        setTimeout(() => {
+            setIsClicking(false);
+        }, 250)
     }
 
     return (
@@ -117,7 +130,7 @@ const Deck: FC<{ list: string[], prompt: string }> = ({ list, prompt }) => {
                 </CardBody>
             </CardWrapper>
             <DeckButtonWrapper>
-                <DeckButton isClicking={clicking} onClick={() => clickButton()}>Next</DeckButton>
+                <DeckButton isClicking={isClicking} onClick={() => clickButton()}>Next</DeckButton>
             </DeckButtonWrapper>
         </DeckWrapper>
     )
