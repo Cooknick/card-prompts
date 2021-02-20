@@ -12,7 +12,11 @@ const DeckWrapper = styled.div`
     height: 100%;
     background: white;
     font-weight: bold;
- 
+    flex-direction:  column;
+
+    @media only screen and (min-width: 786px){
+        flex-direction:  row;
+    }
 `
 const CardWrapper = styled.div`
     flex: 2;

@@ -7,10 +7,10 @@ import { colorCodes, pageNames } from '../constants';
 const HeaderWrapper = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: row;
-    height: 100px;
+    flex-direction: column;
+    height: 200px;
     font-size: 20px;
-    padding: 0 10%;
+    padding: 0px;
     box-sizing: border-box;
     justify-content: space-between;
     background: ${colorCodes.primary};
@@ -20,19 +20,24 @@ const HeaderWrapper = styled.div`
     a {
         color: white;
     }
+
+    @media only screen and (min-width: 786px){
+        flex-direction:  row; 
+        height: 100px;
+        padding: 0 10%;
+    }
 `
 
 const HeaderButton = styled.div <{ active: boolean }>`
     height: 100%;
     background: ${props => props.active ? 'white' : 'none'};
     color: ${props => props.active ? colorCodes.primary : 'white'};
-    width: 30%;
+    flex: 1;
     align-items: center;
     display:flex;
     justify-content:center;
     cursor: pointer;
     ${props => props.active ? ' box-shadow: 3px 0px 3px rgba(0,0,0,0.2);' : ''};
-   
 
     :hover {
         background: white;
@@ -45,7 +50,11 @@ const HeaderButtonsWrapper = styled.div`
     display: flex;
     flex-direction: row;
     height: 100%;
-    width: 50%;
+    width: 100%;
+
+    @media only screen and (min-width: 786px){
+        width: 50%;
+    }
 `
 
 const Header = () => {
